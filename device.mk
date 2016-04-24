@@ -134,6 +134,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
+# Doze mode
+PRODUCT_PACKAGES += \
+    LgeDoze
+
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files

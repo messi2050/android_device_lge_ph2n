@@ -293,8 +293,13 @@ bin/loc_launcher
 bin/lowi-server
 bin/xtwifi-client
 bin/xtwifi-inet-agent
+etc/flp.conf
+etc/gps.conf
+etc/izat.conf
+etc/lowi.conf
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
+etc/sap.conf
 etc/xtwifi.conf
 -framework/com.qti.location.sdk.jar
 lib/libloc_api_v02.so

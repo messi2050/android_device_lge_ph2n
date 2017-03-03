@@ -99,6 +99,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fingerprintd
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    gps.msm8937
+
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \

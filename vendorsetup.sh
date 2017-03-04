@@ -1,2 +1,2 @@
-add_lunch_combo cm_tenshi-eng
-add_lunch_combo cm_tenshi-userdebug
+add_lunch_combo cm_ph2n-eng
+add_lunch_combo cm_ph2n-userdebug

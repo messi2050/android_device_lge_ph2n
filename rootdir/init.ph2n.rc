@@ -1,0 +1,9 @@
+# This file will be installed as /init.{ro.hardware}.rc
+import /init.qcom.rc
+
+# to override init.qcom.rc and init.target.rc
+import /init.lge.usb.rc
+import /init.lge.fs.rc
+import /init.${ro.hardware}.power.rc
+
+import /init.msm8937_32_core.rc

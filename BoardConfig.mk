@@ -17,9 +17,9 @@
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := Aquaris_U_Plus,tenshi
+#TARGET_OTA_ASSERT_DEVICE := Aquaris_U_Plus,ph2n
 
-LOCAL_PATH := device/bq/tenshi
+LOCAL_PATH := device/lge/ph2n
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8937
@@ -37,15 +37,15 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8937
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_CONFIG := lineageos_tenshi_defconfig
-TARGET_KERNEL_SOURCE := kernel/bq/msm8937
+TARGET_KERNEL_CONFIG := lineageos_ph2n_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/msm8937
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -164,4 +164,4 @@ WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME     := "wlan"
 
 # inherit from the proprietary version
--include vendor/bq/tenshi/BoardConfigVendor.mk
+-include vendor/lge/ph2n/BoardConfigVendor.mk

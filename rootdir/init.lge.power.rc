@@ -1,0 +1,118 @@
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2011-2012, LG Electronics Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+# chargerlogo
+on chargerlogo
+   trigger early-fs
+   trigger fs
+   trigger post-fs
+   trigger post-fs-data
+   trigger load_all_props_action
+   trigger chargerlogo_exec
+
+on chargerlogo_exec
+   setprop persist.service.kernel.enable 4
+   start log-kernel
+   stop bootanim
+   write /sys/class/android_usb/android0/enable 0
+   write /sys/class/android_usb/android0/idVendor 1004
+   write /sys/class/android_usb/android0/idProduct 6300
+   write /sys/class/android_usb/android0/bDeviceClass 0
+   write /sys/class/android_usb/android0/bDeviceSubClass 0
+   write /sys/class/android_usb/android0/bDeviceProtocol 0
+   write /sys/class/android_usb/android0/functions charge_only
+   write /sys/class/android_usb/android0/enable 1
+   write /persist-lg/chargerlogo/autoboot_nosound 0
+   chmod 0666 /persist-lg/chargerlogo/autoboot_nosound
+
+   exec u:r:chargerlogo:s0 -- /sbin/chargerlogo
+
+# smpl_count
+service smpl_count /system/bin/smpl_count
+   class main
+   user root
+   oneshot
+
+#Power_BSP, thermal senario change about LCD brightness
+on post-fs-data
+   chown system system /sys/class/leds/lcd-backlight/thermald_status
+   chmod 0644 /sys/class/leds/lcd-backlight/thermald_status
+
+# battery fake mode
+on property:persist.service.fakebatt=1
+   write /sys/class/power_supply/battery/pseudo_batt "1 1 100 40 4100000 80 1"
+on property:persist.service.fakebatt=0
+   write /sys/class/power_supply/battery/pseudo_batt "0 1 100 40 4100000 80 1"
+
+# llk mode
+on property:persist.sys.store_demo_enabled=1
+   write /sys/class/power_supply/battery/store_demo_enabled 1
+on property:persist.sys.store_demo_enabled=0
+   write /sys/class/power_supply/battery/store_demo_enabled 0
+
+# emotional led
+on boot
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/blink_patterns
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/blink_patterns
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/input_patterns
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/input_patterns
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/setting
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/setting
+   write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 1
+
+# pm debug mask enable(clock/resume irq)
+on boot
+   write /sys/kernel/debug/clk/debug_suspend 1
+   write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
+
+# charger timer
+   chown system system /sys/class/power_supply/ac/charger_timer
+
+# charging_enable
+   chown system system /sys/class/power_supply/battery/charging_enabled
+
+# safety timer
+   chown system system /sys/class/power_supply/battery/safety_timer_enabled
+
+# printk log level
+   write /proc/sys/kernel/printk "7 6 1 7"
+
+#usb current max mode property
+on property:persist.service.usbcurrentmax=1
+	write /sys/class/power_supply/battery/usb_current_max_mode 1
+on property:persist.service.usbcurrentmax=0
+	write /sys/class/power_supply/battery/usb_current_max_mode 0
+
+# Power_BSP, add hard reset property
+on property:persist.lge.hardreset=1
+	write /sys/module/msm_poweroff/parameters/hard_reset 1
+on property:persist.lge.hardreset=0
+	write /sys/module/msm_poweroff/parameters/hard_reset 0
+

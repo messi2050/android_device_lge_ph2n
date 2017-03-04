@@ -17,25 +17,25 @@
 # Inherit framework first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from tenshi device
-$(call inherit-product, device/bq/tenshi/device.mk)
+# Inherit from ph2n device
+$(call inherit-product, device/lge/ph2n/device.mk)
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Set those variables here to overwrite the inherited values.
-BOARD_VENDOR := bq
-PRODUCT_DEVICE := tenshi
-PRODUCT_NAME := cm_tenshi
-PRODUCT_BRAND := bq
-PRODUCT_MODEL := Aquaris U Plus
-PRODUCT_MANUFACTURER := bq
+BOARD_VENDOR := lge
+PRODUCT_DEVICE := ph2n
+PRODUCT_NAME := cm_ph2n
+PRODUCT_BRAND := lge
+PRODUCT_MODEL := Lg Stylo 2 Plus
+PRODUCT_MANUFACTURER := lge
 
 # Overlays (inherit after vendor/cm to ensure we override it)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-PRODUCT_GMS_CLIENTID_BASE := android-bq
+PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="bq/tenshi/tenshi:6.0.1/MMB29M/1487334495:user/release-keys" \
-    PRIVATE_BUILD_DESC="tenshi-user 6.0.1 MMB29M 1.5.0_20170217-1218 release-keys"
+    BUILD_FINGERPRINT="lge/ph2n/ph2n:6.0.1/MMB29M/1487334495:user/release-keys" \
+    PRIVATE_BUILD_DESC="ph2n-user 6.0.1 MMB29M 1.5.0_20170217-1218 release-keys"

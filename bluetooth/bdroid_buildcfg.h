@@ -17,7 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME "Aquaris U Plus"
+#define BTM_DEF_LOCAL_NAME "messi2050"
 
 #define MAX_ACL_CONNECTIONS    7
 #define MAX_L2CAP_CHANNELS    16

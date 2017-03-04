@@ -1,3 +1,4 @@
+/* This configuration file (SEC) is automatically generated from shell script.*/
 /* IPC Security Config */
 /* <GPS QMI Service ID - 16>:<GPS QMI Instance ID - all instances>:<Client Group ID> */
 16:4294967295:1000:3004
@@ -5,8 +6,6 @@
 56:4294967295:1021:3004
 /* Allow SS CTL service to be used by system and net_raw processes */
 43:4294967295:1000:3004
-/* <UIMHTTP QMI Service ID - 16>:<UIMHTTP QMI Instance ID - all instances>:<Client Group ID> */
-71:4294967295:1001
 /* <UIMRMT QMI Service ID - 16>:<UIMRMT QMI Instance ID - all instances>:<Client Group ID> */
 50:4294967295:1001
 /* QMI-SLIM service permitted to gps and net_raw */
@@ -307,9 +306,9 @@
 33:4294967295:1001
 /* CSVT */
 29:4294967295:1001
-/*LTE*/
-70:4294967295:1001
 /* Allow Data dpmd to access QMI DFS */
 48:4294967295:1000:3004
 /* DIAG */
 4097:4294967295:3009
+/* Allow VSS GNSS service to be used by system and net_raw processes */
+704:4294967295:1000:3004

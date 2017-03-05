@@ -103,11 +103,11 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.class_main.sh \
+    fstab.ph2n \
+    init.lge.power.rc \
     init.qcom.bt.sh \
     init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
+    init.ph2n.rc \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.syspart_fixup.sh \
@@ -115,7 +115,7 @@ PRODUCT_PACKAGES += \
     init.qcom.wifi.sh \
     loggy.sh	   \
     init.target.rc \
-    ueventd.qcom.rc
+    ueventd.ph2n.rc
 
 # IRSC
 PRODUCT_COPY_FILES += \

@@ -83,7 +83,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     copybit.msm8937 \
     gralloc.msm8937 \
-    hwcomposer.msm8937 \
+#    hwcomposer.msm8937 \
     memtrack.msm8937 \
     liboverlay
 
@@ -154,7 +154,7 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxSwVencHevc \
-    libOmxVdec \
+#    libOmxVdec \
     libOmxVenc \
     libstagefrighthw
 
@@ -182,7 +182,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/msm8937_camera.xml:system/etc/camera/msm8937_camera.xml \
-    $(LOCAL_PATH)/configs/camera/ov5670_f5670lge_chromatix.xml:system/etc/camera/ov5670_f5670lge_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/ov5670_f5670bq_chromatix.xml:system/etc/camera/ov5670_f5670lge_chromatix.xml \
     $(LOCAL_PATH)/configs/camera/ov5675_d5v15b_chromatix.xml:system/etc/camera/ov5675_d5v15b_chromatix.xml \
     $(LOCAL_PATH)/configs/camera/s5k3p3_chromatix.xml:system/etc/camera/s5k3p3_chromatix.xml
 

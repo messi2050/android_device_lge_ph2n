@@ -29,7 +29,7 @@ ifneq ($(filter ph2n,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
-
+#adsp
 ADSP_IMAGES := \
     adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 adsp.b07 \
     adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.b13 adsp.b14 adsp.mdt
@@ -43,6 +43,7 @@ $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ADSP_SYMLINKS)
 
+#cmn
 CMN_IMAGES := \
     cmnlib64.b00 cmnlib64.b01 cmnlib64.b02 cmnlib64.b03 cmnlib64.b04 cmnlib64.b05 cmnlib64.mdt \
     cmnlib.b00 cmnlib.b01 cmnlib.b02 cmnlib.b03 cmnlib.b04 cmnlib.b05 cmnlib.mdt
@@ -56,20 +57,7 @@ $(CMN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CMN_SYMLINKS)
 
-CPE_IMAGES := \
-    cpe_9335.b08 cpe_9335.b09 cpe_9335.b11 cpe_9335.b14 cpe_9335.b16 cpe_9335.b18 \
-    cpe_9335.b19 cpe_9335.b20 cpe_9335.b22 cpe_9335.b24 cpe_9335.b26 cpe_9335.b28 \
-    cpe_9335.b29 cpe_9335.mdt
-
-CPE_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CPE_IMAGES)))
-$(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "CPE firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
-
+#cppf
 CPPF_IMAGES := \
     cppf.b00 cppf.b01 cppf.b02 cppf.b03 cppf.b04 cppf.b05 cppf.b06 cppf.mdt
 
@@ -82,19 +70,20 @@ $(CPPF_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CPPF_SYMLINKS)
 
-FINGERPRINT_IMAGES := \
-    fingerpr.b00 fingerpr.b01 fingerpr.b02 fingerpr.b03 fingerpr.b04 fingerpr.b05 \
-    fingerpr.b06 fingerpr.mdt
+#csfido
+CSFIDO_IMAGES := \
+    csfido.b00 csfido.b01 csfido.b02 csfido.b03 csfido.b04 csfido.b05 csfido.b06 csfido.mdt
 
-FINGERPRINT_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FINGERPRINT_IMAGES)))
-$(FINGERPRINT_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "FINGERPRINT firmware link: $@"
+CSFIDO_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CSFIDO_IMAGES)))
+$(CSFIDO_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "CSFIDO firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(GOODIXFP_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(CSFIDO_SYMLINKS)
 
+#isdb
 ISDB_IMAGES := \
     isdbtmm.b00 isdbtmm.b01 isdbtmm.b02 isdbtmm.b03 isdbtmm.b04 isdbtmm.b05 \
     isdbtmm.b06 isdbtmm.mdt
@@ -108,6 +97,7 @@ $(ISDB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ISDB_SYMLINKS)
 
+#mba
 MBA_IMAGES := mba.mbn
 
 MBA_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MBA_IMAGES)))
@@ -119,18 +109,7 @@ $(MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MBA_SYMLINKS)
 
-MDTP_IMAGES := \
-    mdtp.b00 mdtp.b01 mdtp.b02 mdtp.b03 mdtp.b04 mdtp.b05 mdtp.b06 mdtp.mdt
-
-MDTP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MDTP_IMAGES)))
-$(MDTP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "MDTP firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(MDTP_SYMLINKS)
-
+#modem
 MODEM_IMAGES := \
     modem.b00 modem.b01 modem.b03 modem.b05 modem.b06 modem.b07 modem.b08 \
     modem.b09 modem.b10 modem.b11 modem.b12 modem.b13 modem.b14 modem.b15 \
@@ -145,19 +124,7 @@ $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
-SMPLAP_IMAGES := \
-    smplap32.b00 smplap32.b01 smplap32.b02 smplap32.b03 smplap32.b04 smplap32.b05 \
-    smplap32.b06 smplap32.mdt
-
-SMPLAP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(SMPLAP_IMAGES)))
-$(SMPLAP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "SMPLAP firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(SMPLAP_SYMLINKS)
-
+#venus
 VENUS_IMAGES := \
     venus.b00 venus.b01 venus.b02 venus.b03 venus.b04 venus.mdt
 
@@ -170,6 +137,7 @@ $(VENUS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(VENUS_SYMLINKS)
 
+#wcnss
 WCNSS_IMAGES := \
     wcnss.b00 wcnss.b01 wcnss.b02 wcnss.b04 wcnss.b06 \
     wcnss.b09 wcnss.b10 wcnss.b11 wcnss.b12 wcnss.mdt
@@ -183,6 +151,7 @@ $(WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_SYMLINKS)
 
+#widevine
 WV_IMAGES := \
     widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.b04 widevine.b05 \
     widevine.b06 widevine.mdt

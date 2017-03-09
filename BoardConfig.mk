@@ -143,6 +143,10 @@ TARGET_RIL_VARIANT := caf
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
+# Keymaster
+#TARGET_PROVIDES_KEYMASTER := true
+#TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 

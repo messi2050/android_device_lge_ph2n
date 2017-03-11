@@ -59,8 +59,8 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
-QCOM_BT_USE_BTNV := true
-QCOM_BT_USE_SMD_TTY := true
+#QCOM_BT_USE_BTNV := true
+#QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
@@ -161,8 +161,8 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME     := "wlan"
+WIFI_DRIVER_MODULE_PATH     	 := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME     	 := "wlan"
 
 # inherit from the proprietary version
 -include vendor/lge/ph2n/BoardConfigVendor.mk

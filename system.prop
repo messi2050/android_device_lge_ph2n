@@ -21,8 +21,6 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ro.telephony.default_network=9
 telephony.lteOnCdmaDevice=1
-ro.telephony.call_ring.multiple=false
-persist.radio.multisim.config=dsds
 
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.custom_ecc=1
@@ -47,7 +45,6 @@ persist.data.mode=concurrent
 ro.vendor.extension_library=libqti-perfd-client.so
 
 ro.sf.lcd_density=320
-ro.sf.hwrotation=180
 
 # set dpm enable NSRM
 persist.dpm.feature=7

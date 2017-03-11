@@ -27,10 +27,11 @@
 
 # TODO: This MUST be blocked not use in LGE device configuration.
 import init.qcom.usb.rc
-import init.target.rc
+#import init.target.rc
 import init.qcom.factory.rc
 import init.qcom.power.rc
 import init.device.rc
+import init.ph2n_core.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug

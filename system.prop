@@ -1,8 +1,8 @@
 
 # Camera
-persist.camera.HAL3.enabled=1
-persist.camera.is_type=1
-persist.camera.gyro.android=1
+#persist.camera.HAL3.enabled=1
+persist.camera.is_type=0
+persist.camera.gyro.android=0
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk
 
 # Telephony
@@ -25,7 +25,7 @@ telephony.lteOnCdmaDevice=1
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.custom_ecc=1
 persist.radio.sib16_support=1
-persist.radio.mt_sms_ack=20
+#persist.radio.mt_sms_ack=20
 
 #Optimal dex2oat threads for faster app installation
 ro.sys.fw.dex2oat_thread_count=4
@@ -47,8 +47,8 @@ ro.vendor.extension_library=libqti-perfd-client.so
 ro.sf.lcd_density=320
 
 # set dpm enable NSRM
-persist.dpm.feature=7
-persist.sys.dpmd.nsrm=3
+persist.dpm.feature=0
+#persist.sys.dpmd.nsrm=3
 
 # system props for the cne module
 persist.cne.feature=1

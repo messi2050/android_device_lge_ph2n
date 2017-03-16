@@ -23,14 +23,14 @@ service lge-usb-def-sh /system/bin/sh /init.lge.usb.default.sh
     user root
     oneshot
     disabled
-    seclabel u:r:lge-usb-def-sh:s0
+#    seclabel u:r:lge-usb-def-sh:s0
 
 service usbdebug-manager /sbin/usbdebug-manager
     class late_start
     user root
     disabled
     oneshot
-    seclabel u:r:usbdebug-manager:s0
+#    seclabel u:r:usbdebug-manager:s0
 
 on usb_debug
     trigger early-fs

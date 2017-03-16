@@ -1,4 +1,4 @@
-import init.lge.usb.dev.rc
+#import init.lge.usb.dev.rc
 
 on init
     write /sys/class/android_usb/android0/f_rndis/manufacturer LGE
@@ -16,7 +16,7 @@ service lge-usb-sh /system/bin/sh /init.lge.usb.sh
     class core
     user root
     oneshot
-    seclabel u:r:lge-usb-sh:s0
+#    seclabel u:r:lge-usb-sh:s0
 
 service lge-usb-def-sh /system/bin/sh /init.lge.usb.default.sh
     class core

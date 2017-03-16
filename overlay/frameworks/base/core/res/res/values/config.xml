@@ -178,6 +178,12 @@
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
     <integer name="config_shutdownBatteryTemperature">680</integer>
 
+    <!-- The RadioAccessFamilies supported by the device.
+         Empty is viewed as "all".  Only used on devices which
+         don't support RIL_REQUEST_GET_RADIO_CAPABILITY
+         format is UMTS|LTE|... -->
+    <string name="config_radio_access_family" translatable="false">GSM|WCDMA|LTE</string>
+
     <!-- Enable blur support 
     <bool name="config_uiBlurEnabled">true</bool> -->
 

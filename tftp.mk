@@ -4,6 +4,13 @@
 
 $(shell rm -rf $(TARGET_OUT)/rfs/)
 
+#To be enabled when prepopulation support is needed for the read_write folder
+# $(shell rm -rf  $(TARGET_OUT_DATA)/rfs/)
+# $(shell mkdir -p $(TARGET_OUT_DATA)/rfs/msm/mpss/)
+# $(shell mkdir -p $(TARGET_OUT_DATA)/rfs/msm/adsp/)
+# $(shell mkdir -p $(TARGET_OUT_DATA)/rfs/mdm/mpss/)
+# $(shell mkdir -p $(TARGET_OUT_DATA)/rfs/mdm/adsp/)
+
 #########################################################################
 # MSM Folders
 #########################################################################

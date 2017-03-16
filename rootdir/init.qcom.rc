@@ -26,16 +26,21 @@
 #
 
 # TODO: This MUST be blocked not use in LGE device configuration.
-import init.qcom.usb.rc
-#import init.target.rc
-import init.qcom.factory.rc
+#import init.qcom.usb.rc
+import init.target.rc
+#import init.qcom.factory.rc
 import init.qcom.power.rc
 import init.device.rc
 import init.ph2n_core.rc
+import init.lge.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
+
+on init
+    # Load LGE Symbols
+    #export LD_SHIM_LIBS /system/lib/libril.so|liblge.so
 
 # TODO: This MUST be disabled not use 'sdcard' in LGE device.
 #on init
@@ -608,6 +613,11 @@ service sensors /system/bin/sensors.qcom
     group root
     disabled
 
+service set_baseband /system/bin/sh /system/etc/set_baseband.sh
+    class late_start
+    user root
+    oneshot
+
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
     stop netmgrd
@@ -887,6 +897,14 @@ service battery_monitor /system/bin/battery_monitor
     group system
     disabled
 
+service_redefine ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log net_raw
+
 service ril-daemon2 /system/bin/rild -c 2
     class main
     socket rild2 stream 660 root radio
@@ -1078,28 +1096,6 @@ service seemp_healthd /system/vendor/bin/seemp_healthd
 on charger
     setprop persist.sys.usb.config charging
 
-#LGE_CHANGE_S, Advanced MOCA, huny.lee@lge.com
-service moca_service /system/bin/advanced_moca -s
-    class late_start
-    user root
-    group system sdcard_r sdcard_rw radio
-    disabled
-    oneshot
-    socket Full.MOCA.port stream 660 system system
-
-on property:persist.service.moca.enable=1
-   start moca_service
-
-service moca_service_disable /system/bin/advanced_moca -k
-    class late_start
-    user root
-    group system sdcard_r sdcard_rw radio
-    disabled
-    oneshot
-
-on property:persist.service.moca.enable=0
-   start moca_service_disable
-#LGE_CHANGE_E, Advanced MOCA, huny.lee@lge.com
 #add poweroffhandler
 service poweroffhandler /system/bin/poweroffhandler
     class core

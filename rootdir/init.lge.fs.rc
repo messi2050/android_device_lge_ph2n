@@ -1,0 +1,33 @@
+on init
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /persist-lg 0771 system system
+    mkdir /sns 0775 system system
+    mkdir /storage 0751 system sdcard_r
+
+    export EXTERNAL_STORAGE /sdcard
+
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
+
+    # setup_fs
+    wait /dev/block/bootdevice/by-name/userdata
+    wait /dev/block/bootdevice/by-name/cache
+    wait /dev/block/bootdevice/by-name/sns
+    wait /dev/block/bootdevice/by-name/drm
+    wait /dev/block/bootdevice/by-name/persist
+    exec u:r:setup_fs:s0 -- /sbin/setup_fs_static \
+        /dev/block/bootdevice/by-name/userdata \
+        /dev/block/bootdevice/by-name/cache \
+        /dev/block/bootdevice/by-name/sns \
+        /dev/block/bootdevice/by-name/drm \
+        /dev/block/bootdevice/by-name/persist \
+        no_reboot
+
+on post-fs
+    chown system system /persist-lg
+    chmod 0771 /persist-lg
+
+    chown system system /sns
+    chmod 0755 /sns

@@ -17,8 +17,13 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
+#define BLUETOOTH_QTI_SW TRUE
+
 #define BTM_DEF_LOCAL_NAME "Lg Stylo 2 Plus"
 
 #define BLE_VND_INCLUDED   TRUE
-#define BT_CLEAN_TURN_ON_DISABLED 1
+#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+
+#define BTM_WBS_INCLUDED TRUE
+#define BTIF_HF_WBS_PREFERRED TRUE
 #endif

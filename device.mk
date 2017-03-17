@@ -173,6 +173,15 @@ PRODUCT_PACKAGES += \
     liblge \
     libxml2
 
+# RIL
+PRODUCT_PACKAGES += \
+    libril_shim
+
+# BoringSSL compatability wrapper
+PRODUCT_PACKAGES += \
+    libboringssl-compat \
+    libstlport
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8937

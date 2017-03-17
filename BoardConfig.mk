@@ -139,14 +139,14 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.ph2n
 
 # RIL
 TARGET_RIL_VARIANT := caf
-#BOARD_RIL_CLASS += ../../../device/lge/ph2n/ril/
+BOARD_RIL_CLASS += ../../../device/lge/ph2n/ril/
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
 # Keymaster
 #TARGET_PROVIDES_KEYMASTER := true
-#TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk

@@ -5,5 +5,6 @@ import /init.qcom.rc
 import /init.lge.usb.rc
 import /init.lge.fs.rc
 import /init.${ro.hardware}.power.rc
+import /init.lge.rc
 
 import /init.msm8937_32_core.rc

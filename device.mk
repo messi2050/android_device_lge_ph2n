@@ -97,7 +97,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fingerprintd
 
-# Fingerprint
+# Gps
 PRODUCT_PACKAGES += \
     gps.msm8937
 
@@ -122,13 +122,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
 # IRQ Balancer
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
-
-# Keylayout
 #PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/keylayout/msg2xxx.kl:system/usr/keylayout/msg2xxx.kl \
-#    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl
+#    $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -191,16 +186,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/sensor_def_common.conf:system/etc/sensors/sensor_def_common.conf \
     $(LOCAL_PATH)/configs/sensors/sensor_def_variable.conf:system/etc/sensors/sensor_def_variable.conf
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/camera/msm8937_camera.xml:system/etc/camera/msm8937_camera.xml \
-    $(LOCAL_PATH)/configs/camera/ov5670_f5670bq_chromatix.xml:system/etc/camera/ov5670_f5670lge_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov5675_d5v15b_chromatix.xml:system/etc/camera/ov5675_d5v15b_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/s5k3p3_chromatix.xml:system/etc/camera/s5k3p3_chromatix.xml
-
 # Thermal Configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-8937.conf:system/etc/thermal-engine-8937.conf \
-    $(LOCAL_PATH)/configs/thermal-engine-default.conf:system/etc/thermal-engine-default.conf
+    $(LOCAL_PATH)/configs/thermal-engine-8937.conf:system/etc/thermal-engine-8937.conf
+#    $(LOCAL_PATH)/configs/thermal-engine-default.conf:system/etc/thermal-engine-default.conf
 
 # Wifi
 PRODUCT_PACKAGES += \

@@ -1,9 +1,11 @@
-
 # Camera
 #persist.camera.HAL3.enabled=1
 persist.camera.is_type=0
 persist.camera.gyro.android=0
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+#properties for limiting preview size in camera
+camera.display.umax=1920x1080
+camera.display.lmax=1280x720
 
 # Telephony
 DEVICE_PROVISIONED=1
@@ -87,3 +89,6 @@ persist.debug.sensors.hal=i
 debug.qualcomm.sns.daemon=i
 debug.qualcomm.sns.libsensor1=e
 persist.sensors.mag_filter_size=8
+
+# bluetooth
+ro.bt.bdaddr_path=/data/misc/bdaddr

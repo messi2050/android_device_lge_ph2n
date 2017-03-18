@@ -1,0 +1,151 @@
+on post-fs
+    mkdir /persist-lg/property 0771 system radio
+    mkdir /persist-lg/autosimlock 0770 system system
+    mkdir /persist-lg/poweron 0775 system system
+    mkdir /persist-lg/tmo 0771 radio radio
+    #For U+ call-frw
+    mkdir /persist-lg/callfw 0770 radio radio
+    #For LGKM default key storage
+    mkdir /persist-lg/kmstore 0770 system system
+
+    #QFUSE
+    write /sys/devices/platform/lge-qfprom/sec_read 0
+
+on post-fs-data
+    #CAPP_FONTS
+    mkdir /data/font 775 system system
+    chmod 775 /data/font
+    mkdir /data/font/config 775 system system
+    chmod 775 /data/font/config
+    mkdir /data/font/download 775 system system
+    chmod 775 /data/font/download
+
+# 2014-11-10 hyukbin.ko@lge.com LGP_DATA_APN_BACKUP_SPRINT [START]
+    mkdir /persist-lg/lgdata 0771 radio radio
+# 2014-11-10 hyukbin.ko@lge.com LGP_DATA_APN_BACKUP_SPRINT [END]
+    #LGDRM
+    mkdir /data/lgdrm 0770 lgdrm lgdrm_acc
+    mkdir /persist-lg/lgdrm 0770 lgdrm lgdrm_acc
+
+    #Widevine
+    mkdir /persist-lg/widevine 0770 drm system
+
+    #Widevine firmware
+    mkdir /persist-lg/firmware 0771 system system
+
+    #Secure clock
+    mkdir /persist-lg/secclk 0700 system system
+
+    #chargerlogo
+    mkdir /persist-lg/chargerlogo 0770 system system
+
+    #DivX DRM
+    mkdir /persist-lg/multimedia 0770 media divxdrm
+    mkdir /persist-lg/multimedia/nx 0770 media divxdrm
+    mkdir /persist-lg/multimedia/uma 0770 media divxdrm
+    mkdir /persist-lg/multimedia/scnt 0770 media divxdrm
+    mkdir /persist-lg/multimedia/scnt/sdadf 0770 media divxdrm
+
+    #Kill-Switch
+    mkdir /persist-lg/mms 0770 system lgmms
+
+    #MM Proxy
+    mkdir /persist-lg/mmoprt 0771 system system
+
+    #Encryption
+    mkdir /persist-lg/encryption 0771 system system
+
+    #secureks
+    mkdir /persist-lg/secureks 0770 system system
+
+    #CAPP_BLUEERROR_HANDLER: temp version, it will be removed
+    chown root system /data/dontpanic
+    chmod 0775 /data/dontpanic
+
+    #LGMDM [a1-mdm-dev@lge.com][ID-MDM-77][ID-MDM-289]
+    mkdir /data/system 0775 system system
+    mkdir /data/system/lgmdm 0700 system system
+
+    #safety_timer hidden menu support
+    chown system system /sys/class/power_supply/battery/safety_timer
+    chown system system /sys/class/power_supply/battery/safety_timer_enabled
+
+	# LGE_CHANGE_S, [display] feature : SP MIRRORING
+	chmod 0660 /sys/class/graphics/fb0/sp_link_backlight_off
+	chown system system /sys/class/graphics/fb0/sp_link_backlight_off
+	chmod 0660 /sys/devices/virtual/input/lge_touch/sp_link_touch_off
+	chown system system /sys/devices/virtual/input/lge_touch/sp_link_touch_off
+	# LGE_CHANGE_E, [display] feature : SP MIRRORING
+
+    # CAPP_INTEGRITY, LGIS [lge-is-dev@lge.com]
+    mkdir /data/system/lgis 0700 system system
+
+    #COTA
+    mkdir /data/shared 0755
+    chown system system /data/shared
+    restorecon /data/shared
+
+    #NTCODE_LISTING
+    mkdir /data/app-system 0771 system sytem
+
+    #SELinux
+    mkdir /data/misc/audit 00750 system system
+
+#/* 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP [START] */
+    mkdir /persist-lg/lgdata 0775 radio radio
+#/* 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP [END] */
+
+    # LGBackup Removing Unlabeled Resource
+    rm /data/data/.bnr_fifo_rly
+    rm /data/data/.bnr_fifo_req
+
+    #labeling lg partitions
+    restorecon_recursive /persist-lg
+    restorecon /sns
+    restorecon_recursive /sns
+    restorecon /mpt
+    restorecon_recursive /mpt
+    restorecon /persist
+    restorecon_recursive /persist
+
+# LGE_CHANGE_S, [SIMLock][KDDI], 20160406, for KDDI SIMLock Management
+    mkdir /persist-lg/cardinal 0770 system system
+# LGE_CHANGE_E, [SIMLock][KDDI], 20160406, for KDDI SIMLock Management
+
+on boot
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    # LGP_DATA
+    write /proc/sys/net/core/rmem_max  8388608
+    write /proc/sys/net/core/wmem_max  8388608
+
+# LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
+on property:ro.build.product=z2
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=p1
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=h1
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=b3
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=JSG
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=l5
+    write /proc/sys/net/core/netdev_max_backlog 5000
+# LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
+
+
+# LGE_CHANGE_S, [display] feature : SP MIRRORING
+on property:com.lge.splink_screen_off=0
+    write /sys/class/graphics/fb0/sp_link_backlight_off 0
+    write /sys/devices/virtual/input/lge_touch/sp_link_touch_off 0
+
+on property:com.lge.splink_screen_off=1
+    write /sys/class/graphics/fb0/sp_link_backlight_off 1
+    write /sys/devices/virtual/input/lge_touch/sp_link_touch_off 1
+# LGE_CHANGE_E, [display] feature : SP MIRRORING

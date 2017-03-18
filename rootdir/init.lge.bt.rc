@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2012, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -25,55 +25,38 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+on boot
 
-target="$1"
-serial="$2"
+# Feature chip vendor : qct
+setprop bluetooth.chip.vendor qcom
 
-# No path is set up at this point so we have to do it here.
-PATH=/sbin:/system/sbin:/system/bin:/system/xbin
-export PATH
+# Enable AVRCP Browsing
+setprop persist.service.avrcp.browsing 1
 
-mount_needed=false;
+# SCMS-T property set during phone Booting
+setprop persist.service.bdroid.a2dp_con 0
+setprop persist.service.bdroid.scms_t 0
 
-if [ ! -f /system/etc/boot_fixup ];then
-# This should be the first command
-# remount system as read-write.
-  mount -o rw,remount,barrier=1 /system
-  mount_needed=true;
-fi
+#on property:bluetooth.start_hci=true
+#    start start_hci_filter
 
-# **** WARNING *****
-# This runs in a single-threaded, critical path portion
-# of the Android bootup sequence.  This is to guarantee
-# all necessary system partition fixups are done before
-# the rest of the system starts up.  Run any non-
-# timing critical tasks in a separate process to
-# prevent slowdown at boot.
+#on property:bluetooth.start_hci=false
+#    stop start_hci_filter
 
-# Run modem link script
-if [ -f /system/etc/init.qcom.modem_links.sh ]; then
-  /system/bin/sh /system/etc/init.qcom.modem_links.sh
-fi
+#service start_hci_filter /system/bin/wcnss_filter
+#    class late_start
+#    user bluetooth
+#    group bluetooth
+#    disabled
 
-# Run mdm link script
-if [ -f /system/etc/init.qcom.mdm_links.sh ]; then
-  /system/bin/sh /system/etc/init.qcom.mdm_links.sh
-fi
+service bdaddr_loader /system/bin/bdaddr_loader
+    user root
+    group bluetooth net_bt_admin misc net_bt_stack
+    disabled
+    oneshot
 
-# Run wifi script
-if [ -f /system/etc/init.qcom.wifi.sh ]; then
-  /system/bin/sh /system/etc/init.qcom.wifi.sh "$target" "$serial"
-fi
 
-# Run the sensor script
-if [ -f /system/etc/init.qcom.sensor.sh ]; then
-  /system/bin/sh /system/etc/init.qcom.sensor.sh
-fi
-
-touch /system/etc/boot_fixup
-
-if $mount_needed ;then
-# This should be the last command
-# remount system as read-only.
-  mount -o ro,remount,barrier=1 /system
-fi
+service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+    class core
+    user root
+    oneshot

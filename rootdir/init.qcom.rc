@@ -50,6 +50,8 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+    mkdir /sns/cal/ 0755 system system
+
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
     write /sys/fs/cgroup/memory/bg/memory.swappiness 140
@@ -241,6 +243,10 @@ on post-fs-data
     # Tap to Wake
     chown root system /sys/android_touch/wakeup_gesture_enable
     chmod 0660 /sys/android_touch/wakeup_gesture_enable
+
+    # sensor - make directory for sns.reg used by sensordaemon
+    mkdir /sns/cal/ 0755 system system
+    restorecon_recursive /sns
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -780,10 +786,9 @@ service qcom-sh /system/bin/sh /init.qcom.sh
     user root
     oneshot
 
-service getinfo /system/bin/sh /init.get.project.info.sh
-    class main
+service sensor-sh /system/bin/sh /init.qcom.sensors.sh
+    class core
     user root
-    disabled
     oneshot
 
 service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh

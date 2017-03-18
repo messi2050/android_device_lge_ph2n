@@ -25,15 +25,18 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#import /init.ph2n_product.rc
+import /init.ph2n_product.rc
 
 # modem logging (LGODM)
-#import /init.lge.modem_log.rc
+import /init.lge.modem_log.rc
 
-#import /init.wifi.rc
+import /init.wifi.rc
 
 # fingerprints
-#import /init.lge.fingerprints.rc
+import /init.lge.fingerprints.rc
+
+# LGE Bluetooth rc
+import /init.lge.bt.rc
 
 # BSP Display Reader mode
 #service reader_mode /system/bin/sh /init.lge.display.reader_mode.sh

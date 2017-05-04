@@ -1,5 +1,22 @@
-Device Tree for Lg Stylo 2 Plus (ph2n)
-===========================================
-Copyright 2016 - The CyanogenMod Project.
+Device Tree for Lg Stylo 2 Plus
+==============================================
 
+The Stylo 2 Plus (codenamed _"ph2n"_) is a mid-range smartphone from Lg Electronics.
+It was released on June, 2015.
 
+Basic   | Spec Sheet
+-------:|:-------------------------
+CPU     | 4 Cortex-A53 cores clocked at 1.5 GHz & 4 other Cortex-A53 cores clocked at 1.2 GHz
+Chipset | Qualcomm MSM8937 Snapdragon 430
+GPU     | Adreno 505
+Memory  | 2 GB RAM
+Android Version | 6.0.1
+Storage | 16 GB
+MicroSD | Up to 32 GB
+Battery | Removable Li-Ion 3000mAh battery
+Display | 720 x 1280 pixels, 5.7 inches (~294 ppi pixel density)
+Camera  | 13 MP, autofocus, flash LED
+
+Copyright 2017 - The Lineage Android Operating System.
+
+![Samsung Galaxy J7](http://pocketnow.com/wp-content/uploads/2016/07/LG-Stylo-2-Plus.jpg "Samsung Galaxy J7")

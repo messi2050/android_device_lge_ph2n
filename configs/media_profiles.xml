@@ -100,7 +100,7 @@
 <MediaSettings>
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <!-- Back Camera -->
-    <CamcorderProfiles cameraId="0" startOffsetMs="800">
+    <CamcorderProfiles cameraId="0">
 
         <EncoderProfile quality="qcif" fileFormat="3gp" duration="10">
             <Video codec="h264"
@@ -246,7 +246,7 @@
 
     </CamcorderProfiles>
 
-    <CamcorderProfiles cameraId="1" startOffsetMs="800">
+    <CamcorderProfiles cameraId="1">
 
         <EncoderProfile quality="qcif" fileFormat="3gp" duration="10">
             <Video codec="h264"
@@ -498,7 +498,7 @@
     LGE_CHAGE[fefe7270.park] Add LgeCamcorderCap
     -->
     <LgeCamcorderCap  minfps="30000" maxfps="30000"
-        usehighprofile="1"  audiozoomenable="0"
+        usehighprofile="0"  audiozoomenable="0"
         audiozoomX="14" audiozoomY="4"
         usehwaac="1" useOmxCodec="0"/>
 </MediaSettings>

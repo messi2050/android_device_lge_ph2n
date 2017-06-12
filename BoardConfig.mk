@@ -45,7 +45,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 -
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
-TARGET_KERNEL_CONFIG := ph2n_mpcs_us-perf_defconfig
+TARGET_KERNEL_CONFIG := lineageos_ph2n_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/msm8937
 
 # Audio

@@ -31,20 +31,23 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
+TARGET_BOARD_SUFFIX := _32
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := msm8937_32
+TARGET_BOOTLOADER_BOARD_NAME := msm8937
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x00000100
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 TARGET_KERNEL_CONFIG := lineageos_ph2n_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/msm8937
 
@@ -154,6 +157,7 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true

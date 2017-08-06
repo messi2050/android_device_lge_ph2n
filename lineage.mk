@@ -37,5 +37,5 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="MetroPCS/ph2n_mpcs_us/ph2n:7.0/NRD90U/171071514d722:user/release-keys" \
-    PRIVATE_BUILD_DESC="ph2n_mpcs_us-user 7.0 NRD90U 171071514d722 release-keys"
+    BUILD_FINGERPRINT="MetroPCS/ph2n_mpcs_us/ph2n:7.1.2/NRD90U/171071514d722:user/release-keys" \
+    PRIVATE_BUILD_DESC="ph2n_mpcs_us-user 7.1.2 NRD90U 171071514d722 release-keys"

@@ -16,7 +16,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+# Dalvik/HWUI
+#$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
 
 
 # Get non-open-source specific aspects
@@ -97,6 +99,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fingerprintd
 
+# For android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 # Gps
 PRODUCT_PACKAGES += \
     gps.msm8937
@@ -128,6 +134,10 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8937
+
+# Misc
+PRODUCT_PACKAGES += \
+    libcurl
 
 # Media
 PRODUCT_COPY_FILES += \

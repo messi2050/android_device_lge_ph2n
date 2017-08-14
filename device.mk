@@ -20,7 +20,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 #$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
 
-
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/lge/ph2n/ph2n-vendor.mk)
 

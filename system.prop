@@ -31,9 +31,6 @@ persist.radio.custom_ecc=1
 persist.radio.sib16_support=1
 #persist.radio.mt_sms_ack=20
 
-#Optimal dex2oat threads for faster app installation
-ro.sys.fw.dex2oat_thread_count=4
-
 # system prop for opengles version
 #
 # 196609 is decimal for 0x30001 to report major/minor versions as 3/1

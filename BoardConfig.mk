@@ -31,7 +31,6 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
-#TARGET_BOARD_SUFFIX := _32
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8937
@@ -46,9 +45,8 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
-#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
-#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 TARGET_KERNEL_CONFIG := lineageos_ph2n_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/msm8937
 
@@ -75,7 +73,6 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # CNE
 BOARD_USES_QCNE := true
-TARGET_LDPRELOAD := libNimsWrap.so
 
 # Dex pre-opt to speed up initial boot
 ifeq ($(HOST_OS),linux)
@@ -123,9 +120,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 USE_DEVICE_SPECIFIC_GPS := true
 USE_DEVICE_SPECIFIC_LOC_API := true
 TARGET_NO_RPC := true
-
-# Init
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true

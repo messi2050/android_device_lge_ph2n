@@ -1,4 +1,4 @@
-ifeq ($(TARGET_DEVICE),tenshi)
+ifeq ($(TARGET_DEVICE),ph2n)
 
 include $(call all-subdir-makefiles)
 

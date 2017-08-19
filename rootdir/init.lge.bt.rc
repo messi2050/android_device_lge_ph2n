@@ -50,9 +50,9 @@ setprop persist.service.bdroid.scms_t 0
 #    disabled
 
 service bdaddr_loader /system/bin/bdaddr_loader
+    class late_start
     user root
-    group bluetooth net_bt_admin misc net_bt_stack
-    disabled
+    group bluetooth net_bt_admin
     oneshot
 
 

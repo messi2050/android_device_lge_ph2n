@@ -40,42 +40,25 @@ esac
 chown -h root.system /sys/devices/platform/msm_hsusb/gadget/wakeup
 chmod -h 220 /sys/devices/platform/msm_hsusb/gadget/wakeup
 
-# Target as specified in build.prop at compile-time
-target=`getprop ro.board.platform`
-
 # Set platform variables
-if [ -d /sys/devices/soc0 ]; then
+if [ -f /sys/devices/soc0/hw_platform ]; then
     soc_hwplatform=`cat /sys/devices/soc0/hw_platform` 2> /dev/null
-    soc_id=`cat /sys/devices/soc0/soc_id` 2> /dev/null
 else
     soc_hwplatform=`cat /sys/devices/system/soc/soc0/hw_platform` 2> /dev/null
 fi
 
-#
-# soc_id may specify additional chip variants not captured in ro.board.platform
-# so allow for additional target differentiation based on that
-#
-case $soc_id in
-    "252")
-        target="apq8092"
-    ;;
-    "253")
-        target="apq8094"
-    ;;
-esac
-
-# enable rps cpus on msm8937 target
-setprop sys.usb.rps_mask 0
-case "$soc_id" in
-    "294" | "295")
-        setprop sys.usb.rps_mask 10
-    ;;
-esac
+# Get hardware revision
+if [ -f /sys/devices/soc0/revision ]; then
+    soc_revision=`cat /sys/devices/soc0/revision` 2> /dev/null
+else
+    soc_revision=`cat /sys/devices/system/soc/soc0/revision` 2> /dev/null
+fi
 
 #
 # Allow persistent usb charging disabling
 # User needs to set usb charging disabled in persist.usb.chgdisabled
 #
+target=`getprop ro.board.platform`
 usbchgdisabled=`getprop persist.usb.chgdisabled`
 case "$usbchgdisabled" in
     "") ;; #Do nothing here
@@ -110,8 +93,7 @@ esac
 if [ -d /sys/bus/esoc/devices ]; then
 for f in /sys/bus/esoc/devices/*; do
     if [ -d $f ]; then
-        esoc_name=`cat $f/esoc_name`
-        if [ "$esoc_name" = "MDM9x25" -o "$esoc_name" = "MDM9x35" ]; then
+        if [ `grep "^MDM" $f/esoc_name` ]; then
             esoc_link=`cat $f/esoc_link`
             break
         fi
@@ -119,10 +101,53 @@ for f in /sys/bus/esoc/devices/*; do
 done
 fi
 
+target=`getprop ro.board.platform`
+
+# soc_ids for 8937
+if [ -f /sys/devices/soc0/soc_id ]; then
+	soc_id=`cat /sys/devices/soc0/soc_id`
+else
+	soc_id=`cat /sys/devices/system/soc/soc0/id`
+fi
+
+baseband=`getprop ro.baseband`
+case "$baseband" in
+    "apq")
+         target="apq"
+   ;;
+esac
+
+# set USB controller's device node
+case "$target" in
+    "msm8996")
+        setprop sys.usb.controller "6a00000.dwc3"
+	;;
+    "msmcobalt")
+        setprop sys.usb.controller "a800000.dwc3"
+	;;
+    *)
+	;;
+esac
+
+# check configfs is mounted or not
+if [ -d /config/usb_gadget ]; then
+    bootmode=`getprop ro.bootmode`
+    case "$bootmode" in
+        "qem_56k" | "qem_910k" | "pif_56k" | "pif_910k")
+            setprop sys.usb.config factory
+            ;;
+        "qem_130k" | "pif_130k")
+            setprop sys.usb.config factory2
+            ;;
+        *)
+            ;;
+    esac
+    setprop sys.usb.configfs 1
+fi
+
 #
 # Do target specific things
 #
-baseband=`getprop ro.baseband`
 case "$target" in
     "msm8974")
 # Select USB BAM - 2.0 or 3.0
@@ -141,7 +166,7 @@ case "$target" in
              fi
          fi
     ;;
-    "msm8994" | "msm8992" | "msm8996")
+    "msm8994" | "msm8992" | "msm8996" | "msm8953")
         echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
         echo qti,bam2bam_ipa > /sys/class/android_usb/android0/f_rmnet/transports
     ;;
@@ -158,11 +183,18 @@ case "$target" in
         echo qti,bam > /sys/class/android_usb/android0/f_rmnet/transports
     ;;
     "msm8937")
-        echo qti,bam > /sys/class/android_usb/android0/f_rmnet/transports
-        echo 10 > /sys/module/g_android/parameters/rndis_dl_max_pkt_per_xfer
-        echo 3 > /sys/module/g_android/parameters/rndis_ul_max_pkt_per_xfer
+        case "$soc_id" in
+            "313")
+                echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
+                echo qti,bam2bam_ipa > /sys/class/android_usb/android0/f_rmnet/transports
+            ;;
+            *)
+                echo qti,bam > /sys/class/android_usb/android0/f_rmnet/transports
+                echo 10 > /sys/module/g_android/parameters/rndis_dl_max_pkt_per_xfer
+                echo 3 > /sys/module/g_android/parameters/rndis_ul_max_pkt_per_xfer
+            ;;
+        esac
     ;;
-
     * )
         echo smd,bam > /sys/class/android_usb/android0/f_rmnet/transports
         echo 10 > /sys/module/g_android/parameters/rndis_dl_max_pkt_per_xfer
@@ -211,6 +243,21 @@ case "$baseband" in
           # Allow QMUX daemon to assign port open wait time
           chown -h radio.radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
     ;;
+esac
+
+# soc_ids for 8937
+if [ -f /sys/devices/soc0/soc_id ]; then
+	soc_id=`cat /sys/devices/soc0/soc_id`
+else
+	soc_id=`cat /sys/devices/system/soc/soc0/id`
+fi
+
+# enable rps cpus on msm8937 target
+setprop sys.usb.rps_mask 0
+case "$soc_id" in
+	"294" | "295")
+		setprop sys.usb.rps_mask 40
+	;;
 esac
 
 ################################################################################

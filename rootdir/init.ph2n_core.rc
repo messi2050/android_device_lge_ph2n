@@ -27,7 +27,7 @@
 
 import /init.ph2n_product.rc
 
-# modem logging (LGODM)
+# modem logging  (LGODM)
 import /init.lge.modem_log.rc
 
 import /init.wifi.rc
@@ -35,19 +35,22 @@ import /init.wifi.rc
 # fingerprints
 import /init.lge.fingerprints.rc
 
-# LGE Bluetooth rc
-import /init.lge.bt.rc
-
 # BSP Display Reader mode
-#service reader_mode /system/bin/sh /init.lge.display.reader_mode.sh
-#	class main
-#	user root
-#	oneshot
+service reader_mode /system/bin/sh /init.lge.display.reader_mode.sh
+	class main
+	user root
+	oneshot
 
-#on early-fs
-#    ffu_update
+on early-fs
+    ffu_update
 
 on boot
+
+# Display START
+# idle fallback time set
+chown system system /sys/class/graphics/fb0/idle_time
+chmod 0664 /sys/class/graphics/fb0/idle_time
+# Display END
 
 # START TOUCH Sharp specific
 

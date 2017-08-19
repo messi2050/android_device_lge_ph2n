@@ -114,15 +114,22 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.ph2n \
-    init.lge.power.rc \
-    init.qcom.bt.sh \
+    init.qcom.power.rc \
+    init.class_main.sh \
+    init.device.rc \
+    init.lge.bt.rc \
+    init.lge.fingerprints.rc \
+    init.lge.usb.rc \
+    init.lge.usb.sh \
     init.qcom.early_boot.sh \
+    init.qcom.class_core.sh \
     init.ph2n.rc \
+    init.ph2n_core.rc \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom.syspart_fixup.sh \
-    init.qcom.usb.rc \
+    init.qcom.sensors.sh \
     init.qcom.wifi.sh \
+    init.qcom.bt.sh \
     loggy.sh	   \
     init.target.rc \
     ueventd.ph2n.rc

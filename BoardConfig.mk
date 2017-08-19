@@ -153,8 +153,7 @@ BOARD_RIL_CLASS += ../../../device/lge/ph2n/ril/
 USE_SENSOR_MULTI_HAL := true
 
 # Keymaster
-#TARGET_PROVIDES_KEYMASTER := true
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_PROVIDES_KEYMASTER := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk

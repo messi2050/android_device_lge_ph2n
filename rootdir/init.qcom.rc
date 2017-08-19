@@ -519,7 +519,6 @@ service rfs_access /system/bin/rfs_access
 service tftp_server /system/bin/tftp_server
    class core
    user root
-   disabled
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -871,7 +870,6 @@ service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet qcom_diag wifi
-    disabled
 
 ## TODO: Please DO NOT enable the next line when you merge the CAF
 #service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh

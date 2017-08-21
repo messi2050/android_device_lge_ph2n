@@ -32,9 +32,9 @@ ro.telephony.ril_class=LgeLteRIL
 #persist.radio.mt_sms_ack=20
 
 # stock ril
-#persist.radio.apm_sim_not_pwdn=1
-#persist.radio.custom_ecc=1
-#persist.radio.sib16_support=1
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.custom_ecc=1
+persist.radio.sib16_support=1
 
 # system prop for opengles version
 #

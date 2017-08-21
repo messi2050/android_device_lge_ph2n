@@ -14,3 +14,5 @@
 /dev/block/bootdevice/by-name/sns          /sns            ext4    nosuid,nodev,noatime,noauto_da_alloc,errors=continue  wait,notrim
 /dev/block/bootdevice/by-name/mpt          /mpt            ext4    nosuid,nodev,noatime,noauto_da_alloc,errors=continue  wait,notrim
 
+/devices/soc/7864900.sdhci/mmc_host*        /storage/sdcard1   vfat    nosuid,nodev         wait,voldmanaged=sdcard1:auto,noemulatedsd,encryptable=footer
+/devices/soc/78db000.usb/msm_hsusb_host/usb1/1-1/* /storage/usbotg vfat nosuid,nodev wait,voldmanaged=usbotg:auto

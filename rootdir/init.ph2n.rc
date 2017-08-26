@@ -30,13 +30,13 @@ import init.target.rc
 import init.device.rc
 import init.lge.usb.rc
 import /init.lge.usb.rc
-import /init.lge.fs.rc
+import /init.qcom.syspart_fixup.sh
 import /init.${ro.hardware}.power.rc
 
 import /init.msm8937_32_core.rc
-import /init.device.rc
 import init.ph2n_core.rc
 import /init.lge.bt.rc
+import init.wifi.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -763,8 +763,6 @@ on property:netd.fstman.start=true
 on property:netd.fstman.start=false
     stop fstman
 
-    insmod /system/lib/modules/wlan.ko con_mode=5
-
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
     class late_start
     disabled
@@ -826,14 +824,15 @@ service wifi_ftmd /system/bin/wifi_ftmd
     disabled
     oneshot
 
-# TODO: This MUST be removed in LGE platform.
+on property:wifi.ftmd.load=true
+   insmod /system/lib/modules/wlan.ko con_mode=5
+
 service cnss_diag /system/bin/cnss_diag -q -f
     class main
     user system
     group system wifi inet net_admin sdcard_rw media_rw diag
     oneshot
 
-# TODO: This MUST be removed in LGE platform
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
     user system

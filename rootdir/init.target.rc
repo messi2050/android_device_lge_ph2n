@@ -173,7 +173,6 @@ service wcnss-service /system/bin/wcnss_service
     user system
     group system wifi radio
     oneshot
-    disabled
 
 on charger
     wait /dev/block/bootdevice/by-name/system

@@ -132,7 +132,13 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     loggy.sh	   \
     init.target.rc \
+    init.qcom.syspart_fixup.sh \
     ueventd.ph2n.rc
+
+# IPA Manager
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -214,7 +220,6 @@ PRODUCT_COPY_FILES += \
 # Thermal Configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8937.conf:system/etc/thermal-engine-8937.conf
-#    $(LOCAL_PATH)/configs/thermal-engine-default.conf:system/etc/thermal-engine-default.conf
 
 # Vulkan
 PRODUCT_COPY_FILES += \
@@ -223,19 +228,22 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    libwpa_client \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf \
-    wcnss_service \
-    libwcnss_qmi
-
-# Wifi
-PRODUCT_PACKAGES += \
-    libwpa_client \
-    libqsap_sdk \
-    libQWiFiSoftApCfg
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf \
+    hostapd_default.conf \
+    hostapd.accept \
+    hostapd.deny
 
 # WCNSS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_boot.bin \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \

@@ -69,6 +69,7 @@ persist.timed.enable=true
 # Wi-Fi
 wifi.interface=wlan0
 
+# fm
 ro.fm.transmitter=false
 
 #HWUI properties

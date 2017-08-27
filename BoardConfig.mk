@@ -73,7 +73,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := device/lge/ph2n/cmhw/src
+#BOARD_HARDWARE_CLASS := device/lge/ph2n/cmhw/src
 
 # CNE
 BOARD_USES_QCNE := true

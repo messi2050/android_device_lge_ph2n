@@ -30,13 +30,12 @@ import init.target.rc
 import init.device.rc
 import init.lge.usb.rc
 import /init.lge.usb.rc
-import /init.qcom.syspart_fixup.sh
-import /init.${ro.hardware}.power.rc
 
 import /init.msm8937_32_core.rc
 import init.ph2n_core.rc
 import /init.lge.bt.rc
 import init.wifi.rc
+import init.qcom.power.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug

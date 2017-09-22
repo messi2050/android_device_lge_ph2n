@@ -2,9 +2,6 @@
 ro.sys.fw.dex2oat_thread_count=4
 
 # Camera
-#persist.camera.HAL3.enabled=1
-persist.camera.is_type=0
-persist.camera.gyro.android=0
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk
 #properties for limiting preview size in camera
 camera.display.umax=1920x1080
@@ -148,3 +145,18 @@ audio.offload.disable=0
 
 ro.qc.sdk.audio.fluencetype=nxp
 use.voice.path.for.pcm.voip=false
+
+# Media
+media.msm8956hw=0
+mm.enable.smoothstreaming=true
+mmp.enable.3g2=true
+mm.enable.qcom_parser=1048575
+media.aac_51_output_enabled=true
+persist.mm.sta.enable=0
+qcom.hw.aac.encoder=true
+video.disable.ubwc=1
+vidc.disable.split.mode=1
+vidc.enc.narrow.searchrange=1
+#vidc.debug.perf.mode=2
+#vidc.enc.dcvs.extra-buff-count=2
+#vidc.enc.disable.pq=true

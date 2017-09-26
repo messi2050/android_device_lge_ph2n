@@ -114,7 +114,7 @@ audio.deep_buffer.media=true
 #property to enable DS2 dap
 audio.dolby.ds2.enabled=true
 #QC property used when calculating client heap size in audio flinger
-audio.heap.size.multiplier=7
+#audio.heap.size.multiplier=7
 audio.dolby.ds2.hardbypass=true
 #parser input buffer size(256kb) in byte stream mode
 audio.parser.ip.buffer.size=262144
@@ -128,8 +128,8 @@ audio.safx.pbe.enabled=true
 flac.sw.decoder.24bit.support=true
 #Disable speaker protection by default
 persist.speaker.prot.enable=false
-persist.audio.fluence.speaker=false
-persist.audio.fluence.voicecall=false
+persist.audio.fluence.speaker=true
+persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 #fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=fluence
@@ -143,6 +143,8 @@ voice.conc.fallbackpath=deep-buffer
 voice.playback.conc.disabled=true
 voice.record.conc.disabled=false
 voice.voip.conc.disabled=true
+ro.config.vc_call_vol_steps=7
+ro.config.vc_call_vol_default=7
 
 # Audio offload
 #Buffer size in kbytes for compress offload playback

@@ -59,16 +59,16 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>50</item>
-        <item>72</item>
-        <item>85</item>
-        <item>106</item>
-        <item>121</item>
-        <item>129</item>
-        <item>161</item>
-        <item>174</item>
-        <item>204</item>
-        <item>215</item>
+        <item>10</item>
+        <item>77</item>
+        <item>80</item>
+        <item>84</item>
+        <item>104</item>
+        <item>131</item>
+        <item>158</item>
+        <item>176</item>
+        <item>208</item>
+        <item>229</item>
         <item>255</item>
     </integer-array>
 
@@ -103,13 +103,13 @@
          should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"wlan0"</item>
+        <item>"softap.*"</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
-	<item>"bnep\\d"</item>
         <item>"bt-pan"</item>
     </string-array>
 
@@ -223,15 +223,19 @@
     <string-array translatable="false" name="networkAttributes">
         <item>wifi,1,1,1,-1,true</item>
         <item>mobile,0,0,0,-1,true</item>
-        <item>mobile_mms,2,0,4,60000,true</item>
+        <item>mobile_mms,2,0,2,60000,true</item>
         <item>mobile_supl,3,0,2,60000,true</item>
-        <item>mobile_dun,4,0,2,60000,true</item>
+        <item>mobile_dun,4,0,2,-1,true</item>
         <item>mobile_hipri,5,0,3,60000,true</item>
         <item>mobile_fota,10,0,2,60000,true</item>
-        <item>mobile_ims,11,0,2,60000,true</item>
+        <item>mobile_ims,11,0,3,-1,true</item>
         <item>mobile_cbs,12,0,2,60000,true</item>
         <item>bluetooth,7,7,2,-1,true</item>
-        <item>ethernet,9,9,9,-1,true</item>
+        <item>wifi_p2p,13,1,0,-1,true</item>
+        <item>mobile_ia,14,0,2,-1,true</item>
+        <item>mobile_emergency,15,0,2,-1,true</item>
+        <item>mobile_xcap,23,0,2,-1,true</item>
+        <item>mobile_vtims,28,0,2,-1,true</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of radio
@@ -242,7 +246,6 @@
     <string-array translatable="false" name="radioAttributes">
        <item>"1,1"</item>
        <item>"0,1"</item>
-       <item>"7,1"</item>
     </string-array>
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
@@ -285,8 +288,11 @@
          capability can provide power savings when wifi needs to be always kept on. -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
+    <!-- Boolean indicating whether Hotspot 2.0/Passpoint and ANQP queries is enabled 
+    <bool translatable="false" name="config_wifi_hotspot2_enabled">true</bool> -->
+
     <!-- Whether device supports double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
+    <bool name="config_supportDoubleTapWake">true</bool> 
 
     <!-- Flag specifying whether VoLTE & VT is available on device -->
     <bool name="config_device_volte_available">true</bool>
@@ -301,5 +307,105 @@
 
     <!-- Disable buttons backlight configurations -->
     <integer name="config_buttonBrightnessSettingDefault">0</integer>
+
+    <!-- String containing the apn value for tethering.  May be overriden by secure settings
+         TETHER_DUN_APN.  Value is a comma separated series of strings:
+         "name,apn,proxy,port,username,password,server,mmsc,mmsproxy,mmsport,mcc,mnc,auth,type",
+         Or string format of ApnSettingV3.
+         note that empty fields can be ommitted: "name,apn,,,,,,,,,310,260,,DUN" 
+    <string-array translatable="false" name="config_tether_apndata">
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,260,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,160,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,200,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,210,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,220,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,230,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,240,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,250,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,270,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,300,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,310,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,490,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,530,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,580,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,590,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,640,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,660,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,800,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,260,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,160,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,200,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,210,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,220,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,230,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,240,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,250,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,270,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,300,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,310,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,490,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,530,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,580,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,590,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,640,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,660,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,800,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
+    </string-array> -->
+
+    <!-- Entitlement APP provisioning for Tethering 
+    <string-array translatable="false" name="config_mobile_hotspot_provision_app">
+        <item>com.google.android.carrierentitlement</item>
+        <item>com.google.android.carrierentitlement.CarrierEntitlementActivity</item>
+    </string-array>
+    <string translatable="false" name="config_mobile_hotspot_provision_app_no_ui">
+         com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK
+    </string>
+    <string translatable="false" name="config_mobile_hotspot_provision_response">
+         com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK_RESULT 
+    </string> -->
+
+    <!-- If the DUN connection for this CDMA device supports more than just DUN -->
+    <!-- traffic you should list them here. -->
+    <!-- If this device is not CDMA this is ignored.  If this list is empty on -->
+    <!-- a DUN-requireing CDMA device, the DUN APN will support -->
+    <!-- just DUN. -->
+    <string-array translatable="false" name="config_cdma_dun_supported_types">
+        <item>"default"</item>
+        <item>"dun"</item>
+        <item>"mms"</item>
+        <item>"supl"</item>
+    </string-array>
+
+    <!-- Values for GPS configuration -->
+    <string-array name="config_gpsParameters">
+        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>NTP_SERVER=north-america.pool.ntp.org</item>
+        <item>SUPL_VER=0x20000</item>
+        <item>SUPL_MODE=1</item>
+    </string-array>
+
+    <!-- Package name(s) containing location provider support.
+         These packages can contain services implementing location providers,
+         such as the Geocode Provider, Network Location Provider, and
+         Fused Location Provider. They will each be searched for
+         service components implementing these providers.
+         It is strongly recommended that the packages explicitly named
+         below are on the system image, so that they will not map to
+         a 3rd party application.
+         The location framework also has support for installation
+         of new location providers at run-time. The new package does not
+         have to be explicitly listed here, however it must have a signature
+         that matches the signature of at least one package on this list.
+         -->
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <!-- The standard AOSP fused location provider -->
+        <item>com.android.location.fused</item>
+        <!-- The Google provider -->
+        <item>com.google.android.gms</item>
+    </string-array>
+
+    <!-- Enable blur support -->
+    <bool name="config_uiBlurEnabled">true</bool>
 
 </resources>

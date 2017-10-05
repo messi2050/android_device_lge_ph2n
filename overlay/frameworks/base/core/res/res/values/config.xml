@@ -308,62 +308,6 @@
     <!-- Disable buttons backlight configurations -->
     <integer name="config_buttonBrightnessSettingDefault">0</integer>
 
-    <!-- String containing the apn value for tethering.  May be overriden by secure settings
-         TETHER_DUN_APN.  Value is a comma separated series of strings:
-         "name,apn,proxy,port,username,password,server,mmsc,mmsproxy,mmsport,mcc,mnc,auth,type",
-         Or string format of ApnSettingV3.
-         note that empty fields can be ommitted: "name,apn,,,,,,,,,310,260,,DUN" 
-    <string-array translatable="false" name="config_tether_apndata">
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,260,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,160,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,200,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,210,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,220,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,230,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,240,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,250,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,270,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,300,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,310,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,490,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,530,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,580,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,590,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,640,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,660,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,800,,dun,IP,IP,true,0,,,,,,,gid,544D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,260,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,160,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,200,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,210,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,220,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,230,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,240,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,250,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,270,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,300,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,310,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,490,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,530,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,580,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,590,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,640,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,660,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-        <item>[ApnSettingV3] MetroPCS Tethering,pcweb.metropcs.com,,,,,,,,,310,800,,dun,IP,IP,true,0,,,,,,,gid,6D</item>
-    </string-array> -->
-
-    <!-- Entitlement APP provisioning for Tethering 
-    <string-array translatable="false" name="config_mobile_hotspot_provision_app">
-        <item>com.google.android.carrierentitlement</item>
-        <item>com.google.android.carrierentitlement.CarrierEntitlementActivity</item>
-    </string-array>
-    <string translatable="false" name="config_mobile_hotspot_provision_app_no_ui">
-         com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK
-    </string>
-    <string translatable="false" name="config_mobile_hotspot_provision_response">
-         com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK_RESULT 
-    </string> -->
-
     <!-- If the DUN connection for this CDMA device supports more than just DUN -->
     <!-- traffic you should list them here. -->
     <!-- If this device is not CDMA this is ignored.  If this list is empty on -->
@@ -404,8 +348,5 @@
         <!-- The Google provider -->
         <item>com.google.android.gms</item>
     </string-array>
-
-    <!-- Enable blur support -->
-    <bool name="config_uiBlurEnabled">true</bool>
 
 </resources>

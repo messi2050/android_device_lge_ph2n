@@ -170,6 +170,8 @@ PRODUCT_PACKAGES += \
     loggy.sh	   \
     init.target.rc \
     init.qcom.syspart_fixup.sh \
+    init.lge.fm.rc \
+    init.qcom.fm.sh \
     ueventd.ph2n.rc
 
 # IPA Manager

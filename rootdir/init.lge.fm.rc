@@ -1,0 +1,10 @@
+
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+    class late_start
+    user root
+    group system
+    disabled
+    oneshot
+
+on boot
+    setprop ro.fm.module QCT

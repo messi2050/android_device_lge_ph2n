@@ -29,6 +29,7 @@
 import init.target.rc
 import init.device.rc
 import init.lge.usb.rc
+import init.lge.fm.rc
 
 import /init.msm8937_32_core.rc
 import init.ph2n_core.rc

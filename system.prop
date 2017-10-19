@@ -169,3 +169,22 @@ qcom.hw.aac.encoder=true
 video.disable.ubwc=1
 vidc.disable.split.mode=1
 vidc.enc.narrow.searchrange=1
+
+# volte & wfc
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+
+# Radio - IMS
+persist.data.iwlan.enable=true
+persist.radio.calls.on.ims=true
+persist.radio.hw_mbn_update=1
+persist.radio.sw_mbn_openmkt=1
+persist.radio.sw_mbn_update=1
+persist.radio.sw_mbn_volte=1
+persist.radio.start_ota_daemon=1
+persist.volte_enalbed_by_hw=1
+
+#otg
+persist.sys.isUsbOtgEnabled=true

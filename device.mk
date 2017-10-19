@@ -147,6 +147,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8937
 
+# IMS
+PRODUCT_PACKAGES += \
+    libshims_ims
+
 # Init
 PRODUCT_PACKAGES += \
     fstab.ph2n \

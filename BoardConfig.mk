@@ -197,7 +197,6 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.ph2n
 
 # RIL
 TARGET_RIL_VARIANT := caf
-BOARD_RIL_CLASS += ../../../device/lge/ph2n/ril/
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true

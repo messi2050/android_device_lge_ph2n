@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.ph2n \
+    fstab.qcom \
     init.qcom.power.rc \
     init.class_main.sh \
     init.device.rc \
@@ -163,7 +163,7 @@ PRODUCT_PACKAGES += \
     init.lge.usb.default.sh \
     init.qcom.early_boot.sh \
     init.qcom.class_core.sh \
-    init.ph2n.rc \
+    init.qcom.rc \
     init.ph2n_core.rc \
     init.qcom.rc \
     init.qcom.sh \
@@ -173,7 +173,7 @@ PRODUCT_PACKAGES += \
     loggy.sh	   \
     init.target.rc \
     init.qcom.syspart_fixup.sh \
-    ueventd.ph2n.rc
+    ueventd.qcom.rc
 
 # IPA Manager
 PRODUCT_PACKAGES += \
@@ -238,9 +238,9 @@ PRODUCT_PACKAGES += \
     libril_shim
 
 # BoringSSL compatability wrapper
-PRODUCT_PACKAGES += \
-    libboringssl-compat \
-    libstlport
+#PRODUCT_PACKAGES += \
+#    libboringssl-compat \
+#    libstlport
 
 # Camera
 PRODUCT_PACKAGES += \

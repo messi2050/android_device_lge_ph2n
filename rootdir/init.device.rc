@@ -1,2 +1,0 @@
-on early-fs
-	mount_all fstab.ph2n

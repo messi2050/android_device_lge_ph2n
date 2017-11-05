@@ -184,6 +184,7 @@ persist.radio.sw_mbn_update=1
 persist.radio.sw_mbn_volte=1
 persist.radio.start_ota_daemon=1
 persist.volte_enalbed_by_hw=1
+service.qti.ims.enabled=1
 
 #otg
 persist.sys.isUsbOtgEnabled=true

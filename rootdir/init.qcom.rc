@@ -28,11 +28,7 @@
 # TODO: This MUST be blocked not use in LGE device configuration.
 import init.target.rc
 import init.lge.usb.rc
-
-import /init.msm8937_32_core.rc
 import init.ph2n_core.rc
-import /init.lge.bt.rc
-import init.wifi.rc
 import init.qcom.power.rc
 
 on early-init
@@ -56,7 +52,7 @@ on early-init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/libril.so|libril_shim.so"
+#    export LD_SHIM_LIBS "/system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/libril.so|libril_shim.so"
     export LD_SHIM_LIBS "/system/vendor/lib/lib-imsvt.so|libshims_ims.so"
     export LD_SHIM_LIBS "libshim_camera.so:/system/lib/hw/camera.msm8937.so|libshim_camera.so:/system/lib/libfilm_emulation.so|libshim_camera.so"
 
@@ -607,10 +603,10 @@ service config_bt_addr /system/bin/btnvtool -O
     oneshot
 
 # TODO: This MUST be added in LGE platform(It's for Qualcomm solution).
-#service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-#    class core
-#    user root
-#    oneshot
+service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+    class core
+    user root
+    oneshot
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start

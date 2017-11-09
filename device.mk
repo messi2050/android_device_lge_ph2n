@@ -155,24 +155,20 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.power.rc \
     init.class_main.sh \
-    init.device.rc \
-    init.lge.bt.rc \
     init.lge.fingerprints.rc \
     init.lge.usb.rc \
     init.lge.usb.sh \
     init.lge.usb.default.sh \
     init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
     init.qcom.class_core.sh \
-    init.qcom.rc \
     init.ph2n_core.rc \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.sensors.sh \
     init.qcom.wifi.sh \
     init.qcom.bt.sh \
-    loggy.sh	   \
     init.target.rc \
-    init.qcom.syspart_fixup.sh \
     ueventd.qcom.rc
 
 # IPA Manager
@@ -236,11 +232,6 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     libril_shim
-
-# BoringSSL compatability wrapper
-#PRODUCT_PACKAGES += \
-#    libboringssl-compat \
-#    libstlport
 
 # Camera
 PRODUCT_PACKAGES += \

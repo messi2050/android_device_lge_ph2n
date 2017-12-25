@@ -1,9 +1,47 @@
-# Block devices
-/dev/block/bootdevice/by-name/persist                               u:object_r:persist_block_device:s0
-/dev/block/bootdevice/by-name/userdata                              u:object_r:userdata_block_device:s0
+# Bluetooth
+/system/bin/hwaddrs                                                 u:object_r:hwaddrs_exec:s0
+/sys/devices/bluesleep/rfkill/rfkill0/state                         u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/bcm43xx/rfkill/rfkill[0-9](/.*)?                       u:object_r:sysfs_bluetooth_writable:s0
+
+# CPU tunable for EAS
+/sys/devices/system/cpu/cpu[0-3]/cpufreq/schedutil(/.*)?            u:object_r:sysfs_devices_system_cpu:s0
 
 # Fingerprint
+/system/bin/fpc_early_loader                                        u:object_r:fingerprintd_exec:s0
 /sys/devices/soc/75b7000\.spi/spi_master/spi8/spi8\.1(/.*)?         u:object_r:sysfs_devices_fingerprint:s0
-/sys/devices/soc/78b7000\.i2c/i2c-3/3-005f(/.*)?                    u:object_r:sysfs_devices_fingerprint:s0
-/data/fpc_images(/.*)?                                              u:object_r:fingerprint_data_file:s0
-/dev/socket/fpce(/.*)?                                              u:object_r:fingerprint_socket:s0
+
+# FRP partition
+/dev/block/bootdevice/by-name/persistent                            u:object_r:frp_block_device:s0
+
+# Gestures
+/sys/devices/virtual/input/lge_touch/lpwg_notify                    u:object_r:sysfs_gesture:s0
+
+# Init
+/system/bin/init\.power\.sh                                         u:object_r:init_power_exec:s0
+
+# IR Blaster
+/dev/ttyHSL1                                                        u:object_r:cir_device:s0
+
+# Netmgr
+/data/misc/netmgr(/.*)?                                             u:object_r:net_data_file:s0
+
+# NFC
+/dev/pn54[478]                                                      u:object_r:nfc_device:s0
+
+# Persist
+/persist-lg(/.*)?                                                   u:object_r:persist_drm_file:s0
+
+# Power management
+/sys/module/lpm_levels/parameters(/.*)?                             u:object_r:sysfs_power_management:s0
+/sys/devices/soc/qpnp-smbcharger-16/power_supply/battery(/.*)?              u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc/soc:lge-battery-veneer/power_supply/battery-veneer(/.*)?   u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc/6a00000.ssusb/power_supply/usb(/.*)?                       u:object_r:sysfs_usb_supply:s0
+/sys/devices/soc/75b5000.i2c/i2c-7/7-001d/power_supply/usb-parallel(/.*)?   u:object_r:sysfs_usb_supply:s0
+/sys/devices/soc/757a000.i2c/i2c-6/6-0020/power_supply/usb_pd               u:object_r:sysfs_usb_supply:s0
+/sys/devices/soc/qpnp-smbcharger-16/power_supply/dc(/.*)?                   u:object_r:sysfs_dc_supply:s0
+/sys/devices/soc/757a000.i2c/i2c-6/6-0061/power_supply/dc-wireless(/.*)?    u:object_r:sysfs_dc_supply:s0
+
+# Sensors
+/sns                                                                u:object_r:sensors_data_file:s0
+/sns/cal(/.*)?                                                      u:object_r:sensors_data_file:s0
+/persist-lg/sensors(/.*)?                                           u:object_r:sensors_persist_file:s0

@@ -31,9 +31,6 @@ PRODUCT_BRAND := lge
 PRODUCT_MODEL := Lg Stylo 2 Plus
 PRODUCT_MANUFACTURER := lge
 
-# Overlays (inherit after vendor/cm to ensure we override it)
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \

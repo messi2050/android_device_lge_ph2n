@@ -1,8 +1,8 @@
-Device Tree for Lg Stylo 2 Plus
+Device Tree for LG Stylo 2 Plus
 ==============================================
 
 The Stylo 2 Plus (codenamed _"ph2n"_) is a mid-range smartphone from Lg Electronics.
-It was released on June, 2015.
+It was released on June, 2016.
 
 Basic   | Spec Sheet
 -------:|:-------------------------
@@ -17,6 +17,6 @@ Battery | Removable Li-Ion 3000mAh battery
 Display | 720 x 1280 pixels, 5.7 inches (~294 ppi pixel density)
 Camera  | 13 MP, autofocus, flash LED
 
-Copyright 2017 - The Lineage Android Operating System.
+Copyright 2017-2018 - The Lineage Android Operating System.
 
-![Lg Stylo 2 Plus](http://pocketnow.com/wp-content/uploads/2016/07/LG-Stylo-2-Plus.jpg "Lg Stylo 2 Plus")
+![Lg Stylo 2 Plus](http://4.bp.blogspot.com/-vTnhNAPuHSg/WFK4lnP9SlI/AAAAAAAAC00/RCnW-47sbngSB-nJdNEtU187rsuDMlDdQCK4B/s1600/1.jpg "Lg Stylo 2 Plus")

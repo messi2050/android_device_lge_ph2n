@@ -19,6 +19,9 @@ include device/lge/msm8937-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/lge/ph2n
 
+# Kernel
+TARGET_KERNEL_CONFIG := lineage_ph2n_mini_defconfig
+
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432

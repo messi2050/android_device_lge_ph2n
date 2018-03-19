@@ -22,6 +22,10 @@ $(call inherit-product-if-exists, vendor/lge/ph2n/ph2n-vendor.mk)
 # common msm8937
 $(call inherit-product, device/lge/msm8937-common/msm8937.mk)
 
+# Dalvik/HWUI
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 

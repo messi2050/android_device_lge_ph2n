@@ -23,8 +23,8 @@ $(call inherit-product-if-exists, vendor/lge/ph2n/ph2n-vendor.mk)
 $(call inherit-product, device/lge/msm8937-common/msm8937.mk)
 
 # Dalvik/HWUI
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+#$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+#$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -54,7 +54,7 @@ PRODUCT_PACKAGES += \
     fingerprint.msm8937
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/vendor/etc/permissions/android.hardware.fingerprint.xml
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -62,9 +62,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/vendor/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/libnfc-nxp-lg.conf:system/vendor/etc/libnfc-nxp-lg.conf \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/vendor/etc/nfcee_access.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/vendor/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/vendor/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/vendor/etc/permissions/com.android.nfc_extras.xml
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -103,7 +103,7 @@ PRODUCT_COPY_FILES += \
 
 # Thermal Configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-8937.conf:system/etc/thermal-engine-8937.conf
+    $(LOCAL_PATH)/configs/thermal-engine-8937.conf:system/vendor/etc/thermal-engine-8937.conf
 
 # WCNSS
 PRODUCT_COPY_FILES += \

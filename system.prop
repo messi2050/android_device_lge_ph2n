@@ -10,9 +10,6 @@ ro.sf.lcd_density=320
 # property to enable fingerprint
 persist.qfp=false
 
-# fm
-ro.fm.transmitter=false
-
 #Trim properties
 #ro.sys.fw.bservice_enable=true
 #ro.sys.fw.bservice_limit=5

@@ -31,12 +31,12 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 BOARD_VENDOR := lge
 PRODUCT_DEVICE := ph2n
 PRODUCT_NAME := lineage_ph2n
-PRODUCT_BRAND := lge
+PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG Stylo 2 Plus
-PRODUCT_MANUFACTURER := lge
+PRODUCT_MANUFACTURER := LGE
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="MetroPCS/ph2n_mpcs_us/ph2n:7.1.2/NRD90U/171071514d722:user/release-keys" \
     PRIVATE_BUILD_DESC="ph2n_mpcs_us-user 7.1.2 NRD90U 171071514d722 release-keys"
+    BUILD_FINGERPRINT := MetroPCS/ph2n_mpcs_us/ph2n:7.1.2/NRD90U/171071514d722:user/release-keys

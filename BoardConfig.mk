@@ -52,7 +52,7 @@ BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.full
 
 # Properties
-TARGET_VENDOR_PROP += $(LOCAL_PATH)/vendor.prop
+TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
 
 # inherit from the proprietary version
 -include vendor/lge/ph2n/BoardConfigVendor.mk

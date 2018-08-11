@@ -46,13 +46,15 @@ BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 # Treble support
 #BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 #PRODUCT_FULL_TREBLE_OVERRIDE := true
-#PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
+PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
+PRODUCT_SHIPPING_API_LEVEL := 23
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.full
 
 # Properties
 TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
+#TARGET_VENDOR_PROP += $(LOCAL_PATH)/vendor.prop
 
 # inherit from the proprietary version
 -include vendor/lge/ph2n/BoardConfigVendor.mk

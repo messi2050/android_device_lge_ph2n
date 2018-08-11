@@ -34,7 +34,7 @@ include $(CLEAR_VARS)
 CSFP_IMAGES := \
     csfp_app.b00 csfp_app.b01 csfp_app.b02 csfp_app.b03 csfp_app.b04 csfp_app.b05 csfp_app.b06 csfp_app.mdt
 
-CSFP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CSFP_IMAGES)))
+CSFP_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(CSFP_IMAGES)))
 $(CSFP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "CSFP firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -49,7 +49,7 @@ MODEM_IMAGES := \
     modem.b09 modem.b10 modem.b11 modem.b12 modem.b13 modem.b14 modem.b15 \
     modem.b19 modem.b20 modem.b21 modem.b22 modem.b23 modem.b24 modem.mdt modem_pr
 
-MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MODEM_IMAGES)))
+MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(MODEM_IMAGES)))
 $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Modem firmware link: $@"
 	@mkdir -p $(dir $@)
